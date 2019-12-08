@@ -2,9 +2,9 @@
 function addNewReimb(userObject) {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "http://localhost:8080/employee/add",true);
-  
+  console.log(userObject);
   xhr.setRequestHeader("content-type", "application/json");
-  xhr.send(userObject);
+  xhr.send(JSON.stringify(userObject));
 	
 	xhr.onreadystatechange = function(){
 		// let response = JSON.parse(xhr.responseText);
