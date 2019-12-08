@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Page</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/style.css">
+
+</head>
+<body>
+	<div class="centered-content-container" style="text-align: center;">
+		<div class="container text-center" style="text-align: center">
+
+			<ul class="nav justify-content-center">
+				<li class="nav-item">
+            <a class="nav-link active" href="https://sj-reimbursement-reboot.herokuapp.com/register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="add-new-ticket"href="https://sj-reimbursement-reboot.herokuapp.com/">Login</a>
+          </li>
+			</ul>
+
+			<div class="jumbotron text-center col-lg-4">Register</div>
+
+		</div>
+
+		<div id="form-container" class="col-lg-4 center">
+			<form id="registerForm" action="Register.do" method="POST">
+				<div class="form-group">
+					<input type="text" name="usernameInput" class="form-control"
+						id="usernameInput" aria-describedby="username"
+						placeholder="Enter username" required>
+
+				</div>
+
+				<div class="form-group">
+					<!-- <label for="exampleInputPassword1">Password</label> -->
+					<input type="password" class="form-control" name="passwordInput"
+						id="passwordInput" pattern=".{6,}" 
+						title="6 characters minimum" placeholder="Password" required>
+				</div>
+				<div class="form-group">
+					<!-- <label for="firstnameInput">First Name</label> -->
+					<input type="text" name="firstnameInput" class="form-control"
+						id="firstNameInput" aria-describedby="firstname"
+						placeholder="Enter First Name" required>
+
+				</div>
+				<div class="form-group">
+					<!-- <label for="lastnameInput">Last Name</label> -->
+					<input type="text" name="lastNameInput" class="form-control"
+						id="lastNameInput" aria-describedby="username"
+						placeholder="Enter Last Name" required>
+
+				</div>
+				<div class="form-group">
+					<!-- <label for="exampleInputEmail1">Email address</label> -->
+					<input type="email" class="form-control" name="emailInput"
+						id="emailInput" aria-describedby="emailHelp"
+						placeholder="Enter email" required>
+				</div>
+		</div>
+	<br>
+	<button type="submit center" class="btn btn-primary col-lg-3 center">Submit</button>
+	</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
+	<script type="text/javascript" src="/register.js"></script>
+	<script type="module" src="../javascript/hover_modules.js"> </script>
+</body>
+</html>

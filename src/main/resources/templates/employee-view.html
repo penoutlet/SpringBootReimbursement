@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Page</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/style.css">
+
+</head>
+<body>
+	<div class="main-container text-center">
+		<div class="container">
+			<ul class="nav justify-content-center">
+				<li class="nav-item"><a class="nav-link active"
+					href="http://localhost:8080/TestProj/html/register.html">Register</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" id="add-new-ticket"
+					href="http://localhost:8080/TestProj/html/Login.html">Logout</a></li>
+			</ul>
+			<div class="jumbotron col-lg-4 text-center">
+				Welcome
+				<h3>
+					<label id="username"> </label>
+				</h3>
+
+
+				<div class="container-fluid well span6">
+					<div class="row-fluid">
+
+						<div class="span8">
+							<button
+								class="btn btn-warning expand-description-btn rounded desc-btn"
+								data-toggle="collapse" data-target="#userInfo">Profile</button>
+							<div style="height: 30px" id="userInfo"
+								class="collapse description-panel col-lg-12">
+								<h6>
+								<label> Name: </label>
+									<span id="firstname"></span> <span id="lastname"> </span>
+								</h6>
+								<h6>
+									<label> User ID:</label> <label id="userid"></label>
+								</h6>
+								<h6>
+									<span> <label>Email:</label></span> <span id="email"></span>
+								</h6>
+							</div>
+
+
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+			<!-- Button trigger modal -->
+			<button type="button"
+				class="btn btn-primary text-center center col-md"
+				data-toggle="modal" data-target="#exampleModal">Request
+				Reimbursement</button>
+				<br>
+		    <button class="btn btn-success" id="viewPending"> View Pending </button>
+                      
+                          <button class="btn btn-success" id="viewApproved"> View Approved </button>
+                             <button class="btn btn-success" id="viewDenied"> View Denied </button>
+                      <button class="btn btn-success" id="viewAll"> View All </button>
+        
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content text-center">
+						<div class="modal-header text-center">
+							<h5 class="modal-title text-center" id="exampleModalLabel">Request
+								Ticket</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form id="reimbursementForm" action="Employee-add.do"
+								method="POST">
+								<div class="form-group">
+									<label for="usernameInput">Describe the reason for the
+										reimbursement</label>
+									<textarea name="reimbursementInput" id="descriptionInput"
+										cols="45" rows="10" placeholder="Describe the request" required="required"> </textarea>
+								</div>
+
+
+
+								<!-- <div class="row"> -->
+								<div class="col-lg-10">
+									<div class="row">
+										<div class="btn-group-toggle radios" data-toggle="buttons">
+											<label class="btn btn-success active fancy-radios" value=0
+												id="option1"> <input type="radio" name="statusInput"
+												class="fancy-radios" value=0 autocomplete="off">
+												Lodging
+											</label> <label class="btn btn-success fancy-radios" value=1
+												id="option2"> <input type="radio"
+												class="fancy-radios" name="statusInput" value=1
+												autocomplete="off"  required="required"> Travel
+											</label> <label class="btn btn-success fancy-radios" value=1
+												id="option3"> <input type="radio"
+												class="fancy-radios" name="statusInput" value=2
+												autocomplete="off"> Food
+											</label> <label class="btn btn-success fancy-radios" value=1
+												id="option4"> <input type="radio"
+												class="fancy-radios" name="statusInput" value=3
+												autocomplete="off"> Other
+											</label>
+										</div>
+									</div>
+									<br>
+
+								</div>
+								<div class="form-group">
+									<!-- <label for="firstnameInput">First Name</label> -->
+									<input type="number" name="amountInput"
+										class="form-control text-center" id="reimbursement-amount"
+										aria-describedby="Amount" placeholder="Amount" required="required">
+
+
+								</div>
+						</div>
+						<div class="modal-footer">
+								<button type="submit center"
+								data-target="#exampleModal" class="btn btn-primary center">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		
+			<div class="text-center" id="tickets"></div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
+		<script type="text/javascript" src="/employee-view.js"></script>
+		<script type="module" src="hover_modules.js"> </script>
+</body>
+</html>
