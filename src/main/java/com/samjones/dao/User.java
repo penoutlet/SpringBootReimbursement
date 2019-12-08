@@ -15,22 +15,13 @@ import javax.persistence.OneToMany;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long userId;
+	@GeneratedValue
+	Long id;
 	
-	@Column
 	private String email;
-	
-	@Column
 	private String password;
-	
-	@Column
 	private Integer roleId;
-	
-	@Column
 	private String nickname;
-
-	@Column
 	private Boolean loggedIn;
 	
 	@OneToMany(cascade = CascadeType.ALL) @JoinColumn(name="userId")
@@ -46,12 +37,13 @@ public class User {
 	}
 
 
-	public Long getUserId() {
-		return userId;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Boolean getLoggedIn() {

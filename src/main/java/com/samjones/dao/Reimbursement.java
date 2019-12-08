@@ -12,25 +12,13 @@ import javax.persistence.Id;
 public class Reimbursement {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	private Long reimbursementId;
-	
-	@Column
 	private Double amount;
-	
-	@Column 
 	private Date submittedAt;
-	
-	@Column
 	private Date resolvedAt;
-	
-	@Column
 	private String description;
-
-	@Column
 	private Boolean isApproved;
-	
-	@Column
 	private Long userId;
 	
 	public Boolean getIsApproved() {
@@ -96,4 +84,6 @@ public class Reimbursement {
 	public Reimbursement() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 }
