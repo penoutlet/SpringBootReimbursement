@@ -51,6 +51,8 @@ public class EmployeeController {
 	@ResponseBody
 	public HttpStatus addUser(@RequestBody User user) {
 		try {
+			user.setRoleId(0);
+			user.setLoggedIn(false);
 			employeeDAO.save(user);
 		} catch(Exception e) {
 			e.printStackTrace();

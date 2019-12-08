@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 //@RequestMapping("/")
 public class HomeController {
 
-//	@GetMapping
+	@GetMapping
 	public String getHomePage() {
 		return "home";
 	}
 	
-//	@GetMapping("/login")
+	@GetMapping("/login")
 	public String getLoginPage() {
 		return "login-page";
 	}
 	
-//	@GetMapping("/register")
+	@GetMapping("/register")
 	public String getRegistrationPage() {
 		return "register";
 	}

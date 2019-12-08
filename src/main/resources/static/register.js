@@ -1,72 +1,33 @@
-// emailInput.addEventListener("change", function(){
-// 	alert(emailInput.value)
-// })
 
-// let usernameInput = document.getElementById("usernameInput")
-// usernameInput.addEventListener("change", function(){
-// 	alert(usernameInput.value)
-// })
-// import {cardsHover, navHover} from "employee";
+function addNewReimb(userObject) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://localhost:8080/employee/add",true);
+  
+  xhr.setRequestHeader("content-type", "application/json");
+  xhr.send(userObject);
+	
+	xhr.onreadystatechange = function(){
+		// let response = JSON.parse(xhr.responseText);
+		console.log(response);
+	}
 
-// navHover()
-
-
-let fancyRadios = document.getElementsByClassName("fancy-radios");
-
-let option1 = document.getElementById("option1")
-let option2 = document.getElementById("option2")
-option1.addEventListener("click", function(){
-   option2.classList.remove("rounded-circle");
-   option1.classList.add("rounded-circle")
-})
-option2.addEventListener("click", function(){
- option2.classList.add("rounded-circle")
- option1.classList.remove("rounded-circle")
-})
-function getFancyRadios(){
-  let checked=""
-  for(i=0;i<fancyRadios.length;i++){
-    console.log(fancyRadios[i].value)
-    if(fancyRadios[i].checked){
-    checked += fancyRadios[i].value
-    }
-  }
-  // console.log(checked)
-  return checked;
 }
+
 let signUpForm = document.getElementById("registerForm");
 signUpForm.addEventListener("submit", function(e){
- // e.preventDefault() // prevents the page from reloading on form-submittal
-	//alert("Form submitted")
-  let email = document.getElementById("emailInput").value
-  let username = document.getElementById("usernameInput").value
-  let password = document.getElementById("passwordInput").value
-  let firstName = document.getElementById("firstNameInput").value
-  let lastName = document.getElementById("lastNameInput").value
-  let checked = getFancyRadios();
-let userObj = {}
+  e.preventDefault();
+  let email = document.getElementById("emailInput").value;
+  let password = document.getElementById("passwordInput").value;
+let userObj = {};
 
 
-// let radios = document.getElementsByName("exampleRadios")
-// let checked = ""
-//   for(i=0;i<radios.length;i++){
-//     if(radios[i].checked){
-//     checked += radios[i].value
-//     }
-//   }
-
-  userObj.username = username;
+userObj.email = email;
   userObj.password = password;
-  userObj.firstname = firstName;
-  userObj.lastname = lastName;
-  userObj.email = email;
-userObj.user_type = checked;
-//alert(JSON.stringify(userObj))
-console.log(userObj)
+alert(JSON.stringify(userObj))
 
-// ,passwordInput,firstname,lastname);
+  addNewReimb(userObj);
 
-})
+});
 
 
 let navLinks = document.getElementsByClassName("nav-link")

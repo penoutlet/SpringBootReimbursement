@@ -21,7 +21,6 @@ public class User {
 	private String email;
 	private String password;
 	private Integer roleId;
-	private String nickname;
 	private Boolean loggedIn;
 	
 	@OneToMany(cascade = CascadeType.ALL) @JoinColumn(name="userId")
@@ -37,6 +36,12 @@ public class User {
 	}
 
 
+
+	public User(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
 
 	public Long getId() {
 		return id;
@@ -79,13 +84,7 @@ public class User {
 		this.roleId = roleId;
 	}
 
-	public String getNickname() {
-		return nickname;
-	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
 	
 	public User() {
 	}

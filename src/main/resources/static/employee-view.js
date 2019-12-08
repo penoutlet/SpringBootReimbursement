@@ -1,7 +1,7 @@
 window.onload = function(e){
 //	var tickets = getTickets();
-	getTickets();
-	getUserInfo();
+getUserInfo();
+getTickets();
 }
 
 
@@ -9,7 +9,7 @@ window.onload = function(e){
 
 function getUserInfo(){
 	let xhr = new XMLHttpRequest();
-	xhr.open("GET", "http://localhost:8080/TestProj/html/Employee-view.do",true);
+	xhr.open("GET", "http://localhost:8080/employee/1",true);
 	xhr.send();
 	
 	xhr.onreadystatechange = function(){

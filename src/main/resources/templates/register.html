@@ -30,40 +30,18 @@
 		</div>
 
 		<div id="form-container" class="col-lg-4 center">
-			<form id="registerForm" action="Register.do" method="POST">
+			<form id="registerForm">
 				<div class="form-group">
-					<input type="text" name="usernameInput" class="form-control"
-						id="usernameInput" aria-describedby="username"
-						placeholder="Enter username" required>
-
-				</div>
-
-				<div class="form-group">
-					<!-- <label for="exampleInputPassword1">Password</label> -->
-					<input type="password" class="form-control" name="passwordInput"
-						id="passwordInput" pattern=".{6,}" 
-						title="6 characters minimum" placeholder="Password" required>
-				</div>
-				<div class="form-group">
-					<!-- <label for="firstnameInput">First Name</label> -->
-					<input type="text" name="firstnameInput" class="form-control"
-						id="firstNameInput" aria-describedby="firstname"
-						placeholder="Enter First Name" required>
-
-				</div>
-				<div class="form-group">
-					<!-- <label for="lastnameInput">Last Name</label> -->
-					<input type="text" name="lastNameInput" class="form-control"
-						id="lastNameInput" aria-describedby="username"
-						placeholder="Enter Last Name" required>
-
-				</div>
-				<div class="form-group">
-					<!-- <label for="exampleInputEmail1">Email address</label> -->
 					<input type="email" class="form-control" name="emailInput"
 						id="emailInput" aria-describedby="emailHelp"
 						placeholder="Enter email" required>
 				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" name="passwordInput"
+						id="passwordInput" pattern=".{6,}" 
+						title="6 characters minimum" placeholder="Password" required>
+				</div>
+				
 		</div>
 	<br>
 	<button type="submit center" class="btn btn-primary col-lg-3 center">Submit</button>
