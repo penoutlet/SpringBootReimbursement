@@ -8,7 +8,7 @@ function addNewReimb(userObject) {
 	
 	xhr.onreadystatechange = function(){
 		// let response = JSON.parse(xhr.responseText);
-		console.log(response);
+		console.log(xhr.responseText);
 	}
 
 }

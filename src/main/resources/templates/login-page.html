@@ -20,7 +20,7 @@
 					href="https://sj-reimbursement-reboot.herokuapp.com/register">Register</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" id="add-new-ticket"
-					href="https://sj-reimbursement-reboot.herokuapp.com/">Login</a></li>
+					href="https://sj-reimbursement-reboot.herokuapp.com/login">Login</a></li>
 
 			</ul>
 		</div>
@@ -30,16 +30,18 @@
 		</div>
 
 		<div id="form-container" class="col-lg-4 center">
-			<form id="loginForm" action="Login.do" method="POST">
+			<form id="loginForm">
 				<div class="form-group">
-					<input type="text" name="username" class="form-control"
-						id="usernameInput" aria-describedby="username"
-						placeholder="Enter username">
-
+					<input type="email" class="form-control" name="emailInput"
+						id="emailInput" aria-describedby="emailHelp"
+						placeholder="Enter email" required>
 				</div>
-
-
-					<button type="submit" class="btn btn-primary col-lg-6 center">Submit</button>
+				<div class="form-group">
+					<input type="password" class="form-control" name="passwordInput"
+						id="passwordInput" pattern=".{6,}" 
+						title="6 characters minimum" placeholder="Password" required>
+				</div>
+				<button class="btn btn-success">Login</button>
 			</form>
 		</div>
 	</div>

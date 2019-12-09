@@ -6,4 +6,5 @@ import org.springframework.data.rest.core.annotation.RestResource;
 //@RestResource
 public interface EmployeeDAO extends JpaRepository<User, Long>{
 
+	public User findByEmail(String email);
 }

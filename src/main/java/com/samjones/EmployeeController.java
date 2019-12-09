@@ -3,6 +3,7 @@ package com.samjones;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,9 +26,16 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeDAO employeeDAO;
 	
-	@GetMapping
-	public String getEmployeeView() {
-		return "employee-view";
+	@GetMapping("/{id}")
+	public String getEmployeeView(@PathVariable String id) {
+		Long lookupId = Long.parseLong(id);
+		User user = employeeDAO.findById(lookupId).get();
+		System.out.println("User inside emp cont: " + user.toString());
+		if(user.getLoggedIn()==true) {
+			return "employee-view";
+		}
+		
+		return "login-page";
 	}
 
 	
@@ -62,18 +70,18 @@ public class EmployeeController {
 		
 	}
 	
-	@GetMapping("/{id}")
-	@ResponseBody
-	public User findOneUser(@PathVariable Long id) throws Exception {
-		try {
-			return employeeDAO.findById(id).get();
-			
-		} catch(Exception e) {
-			//tring to modify the stacktrace so it doesn't appear in the response...
-			Exception exc = new ResourceNotFoundException();
-//			StackTraceElement[] stacks = new StackTraceElement[0];
-			exc.setStackTrace(null);
-						throw exc;
-		}
-	}
+//	@GetMapping("/{id}")
+//	@ResponseBody
+//	public User findOneUser(@PathVariable Long id) throws Exception {
+//		try {
+//			return employeeDAO.findById(id).get();
+//			
+//		} catch(Exception e) {
+//			//tring to modify the stacktrace so it doesn't appear in the response...
+//			Exception exc = new ResourceNotFoundException();
+////			StackTraceElement[] stacks = new StackTraceElement[0];
+//			exc.setStackTrace(null);
+//						throw exc;
+//		}
+//	}
 }

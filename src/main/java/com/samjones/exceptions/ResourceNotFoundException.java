@@ -1,11 +1,13 @@
 package com.samjones.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
+	private StackTraceElement[] stackTrace = new StackTraceElement[1];
+	private final StackTraceElement stack = new StackTraceElement("EmployeeController", "findOneUser", "EmployeeController.java", 71);
 	@Override
 	public void setStackTrace(StackTraceElement[] stackTrace) {
 		// TODO Auto-generated method stub
-		StackTraceElement stack = new StackTraceElement("EmployeeController", "findOneUser", "EmployeeController.java", 71);
-		stackTrace = new StackTraceElement[1];
+//		StackTraceElement stack = new StackTraceElement("EmployeeController", "findOneUser", "EmployeeController.java", 71);
+//		stackTrace = new StackTraceElement[1];
 		stackTrace[0] = stack;
 
 		
