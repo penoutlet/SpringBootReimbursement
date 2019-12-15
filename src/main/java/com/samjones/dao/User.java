@@ -22,11 +22,41 @@ public class User {
 	private String password;
 	private Integer roleId;
 	private Boolean loggedIn;
+	private String firstName;
+	private String lastName;
+	
+	private String aboutMe;
+	
 	
 	@OneToMany(cascade = CascadeType.ALL) @JoinColumn(name="userId")
 	List<Reimbursement> reimbursements;
 	
 	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public String getAboutMe() {
+		return aboutMe;
+	}
+
+	public void setAboutMe(String aboutMe) {
+		this.aboutMe = aboutMe;
+	}
+
 	public List<Reimbursement> getReimbursements() {
 		return reimbursements;
 	}

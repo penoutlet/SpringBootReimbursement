@@ -1,35 +1,43 @@
 window.onload = function(e){
 //	var tickets = getTickets();
-getUserInfo();
+//getUserInfo();
 getTickets();
 }
 
 
 
 
-function getUserInfo(){
-	let xhr = new XMLHttpRequest();
-	xhr.open("GET", "http://localhost:8080/employee/1",true);
-	xhr.send();
-	
-	xhr.onreadystatechange = function(){
-		let user = JSON.parse(xhr.responseText);
-		console.log(user)
-		setValues(user);
-	}
-}
+//function getUserInfo(){
+//	let empId = window.location.href.split("/")[4]
+//	console.log(window.location.href);
+//	let xhr = new XMLHttpRequest();
+//	xhr.open("GET", `http://localhost:8080/employee/data/${empId}`,true);
+//	xhr.send();
+//	
+//	xhr.onreadystatechange = function(){
+//		let user = JSON.parse(xhr.responseText);
+//		console.log(user)
+//		setValues(user);
+//	}
+//}
 function getTickets(){
+	let userId = window.location.href.split("/")[4];
 	let xhr = new XMLHttpRequest();
-	xhr.open("GET", "http://localhost:8080/TestProj/html/Employee-find.do",true);
+	xhr.open("GET", `http://localhost:8080/reimbursement/tickets/${userId}`,true);
 	xhr.send();
 	ticks = '';
 	xhr.onreadystatechange = function(){
 		
 		if(xhr.readyState==4 && xhr.status==200){
-			ticks = xhr.responseText;
-			ticks = (JSON.parse(ticks))
-			showPendingTicks(ticks)
-			return ticks;
+			tickets = xhr.responseText;
+			console.log(ticks);
+			tickets = (JSON.parse(tickets))
+			let ticketDisplay = document.getElementById("tickets");
+			console.log(ticketDisplay)
+			// loop through tickets and display on the page
+			ticketDisplay.innerHTML = `<div class="card"> ${tickets[0].reimbursementId} </div>`;
+			// showPendingTicks(ticks)
+			return tickets;
 		}
 	}
 }
@@ -120,9 +128,23 @@ function addListeners(){
 				
 			}
 		  let date = ts.toDateString(tickets[i].submitted)
-		  let longCard = `<div class="card text-center ticket-panel panel" style="width: 60rem;">
+		//   let longCard = `<div class="card text-center ticket-panel panel" style="width: 60rem;">
+		// 	  <div class="card-body">
+		// 	  ${statusEle}
+		// 	  <h5 class="card-title">$${tickets[i].amount}</h5>
+		// 	  <h6 class="card-subtitle mb-2 text-muted"><b> Ticket ID: </b> ${tickets[i].reimbId}</h6>
+		// 	  <button  class="btn btn-warning expand-description-btn rounded desc-btn" data-toggle="collapse" data-target = "#${'panel' + i}"> Description </button>
+        //       <div style="height:30px" class="text-center collapse description-panel" id="${'panel' + i}"> 
+                
+		// 	  <p class="card-text"> <b>Description:</b> ${tickets[i].description}</p>
+		// 	  <p class="card-text border> Created at: ${tickets[i].submitted} | date </p>
+		// 	  </div>
+		// 	  </div>
+		// 	  </div>`;
+
+			  let longCard = `<div class="card text-center ticket-panel panel" style="width: 60rem;">
 			  <div class="card-body">
-			  ${statusEle}
+			  ${tickets}
 			  <h5 class="card-title">$${tickets[i].amount}</h5>
 			  <h6 class="card-subtitle mb-2 text-muted"><b> Ticket ID: </b> ${tickets[i].reimbId}</h6>
 			  <button  class="btn btn-warning expand-description-btn rounded desc-btn" data-toggle="collapse" data-target = "#${'panel' + i}"> Description </button>
@@ -133,28 +155,22 @@ function addListeners(){
 			  </div>
 			  </div>
 			  </div>`;
-//		  let ticketsTable = document.getElementById("tickets-table");
-//		  let row = ticketsTable.insertRow(0);
-////		  let cell = row.insertCell()
-//		  row.innerHTML = longCard;
-		
-//		  ticketArea.innerHTML = longCard;
-//		  ticketArea.prepend(longCard);
+
 		    ticketArea.insertAdjacentHTML('afterbegin', longCard );
 		  
 	  }
 
 	  }
   
-  function setValues(user){
-	  document.getElementById("username").innerHTML = user.userName;
-	  document.getElementById("firstname").innerHTML = user.firstName;
-	  document.getElementById("lastname").innerHTML = user.lastName;
-	  document.getElementById("userid").innerHTML = user.userId;
-	  console.log("Email " + user.email)
-	  document.getElementById("email").innerHTML = user.email;
-		 
-  }
+//  function setValues(user){
+//	  document.getElementById("username").innerHTML = user.userName;
+//	  document.getElementById("firstname").innerHTML = user.firstName;
+//	  document.getElementById("lastname").innerHTML = user.lastName;
+//	  document.getElementById("userid").innerHTML = user.userId;
+//	  console.log("Email " + user.email)
+//	  document.getElementById("email").innerHTML = user.email;
+//		 
+//  }
   
   // from the web
 //  function timeConverter(UNIX_timestamp){
@@ -198,11 +214,9 @@ function addListeners(){
 	let pendingTx = []
 	
 	for(let i=0;i<tickets.length;i++){
-		console.log(tickets[i].statusId)
 		if(tickets[i].statusId=="0"){
 			pendingTx.push(tickets[i]);
 			continue;
-//			console.log("Pending tx: " + pendingTx)
 		}
 	}
 		appendReimbursement(pendingTx);

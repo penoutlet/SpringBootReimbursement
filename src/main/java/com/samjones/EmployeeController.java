@@ -1,9 +1,9 @@
 package com.samjones;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.samjones.dao.EmployeeDAO;
+import com.samjones.dao.Reimbursement;
+import com.samjones.dao.ReimbursementDAO;
 import com.samjones.dao.User;
-import com.samjones.exceptions.ResourceNotFoundException;
 
 @Controller
 @RequestMapping("/employee")
@@ -26,16 +27,29 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeDAO employeeDAO;
 	
+	@Autowired
+	private ReimbursementDAO reimbDAO;
+	
 	@GetMapping("/{id}")
-	public String getEmployeeView(@PathVariable String id) {
-		Long lookupId = Long.parseLong(id);
-		User user = employeeDAO.findById(lookupId).get();
+	public String getEmployeeView(Map model, @PathVariable Long id) {
+		User user = employeeDAO.findById(id).get();
+		
+		String email = user.getEmail();
+		List<Reimbursement> tickets = reimbDAO.findByUserId(id);
 		System.out.println("User inside emp cont: " + user.toString());
 		if(user.getLoggedIn()==true) {
+			model.put("email", email);
+			model.put("tickets", tickets);
 			return "employee-view";
 		}
 		
 		return "login-page";
+	}
+	
+	@GetMapping("/data/{id}")
+	@ResponseBody
+	public User getEmployeeData(@PathVariable Long id) {
+		return employeeDAO.findById(id).get();
 	}
 
 	
@@ -69,6 +83,7 @@ public class EmployeeController {
 		return HttpStatus.CREATED;
 		
 	}
+	
 	
 //	@GetMapping("/{id}")
 //	@ResponseBody
