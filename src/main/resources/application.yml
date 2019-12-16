@@ -1,18 +1,18 @@
-# the yml file takes precedence over .properties
-server:
-  port: 8080
- 
-spring:
-  datasource:
-#    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:root}
-    url: jdbc:mysql://sam-my-sql.cmtthcn4z2p3.us-east-2.rds.amazonaws.com:3306/sam-my-sql
-#    username: ${MYSQL_USERNAME:root}
-    username: sam-my-sql
-#    password: ${MYSQL_PASSWORD:root}
-    password: sam-my-sql
-  jpa:
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL57Dialect
+## the yml file takes precedence over .properties
+#server:
+#  port: 8080
+# 
+#spring:
+#  datasource:
+##    url: jdbc:mysql://dfntyo7se2pq55dn:blaj5c5fqz80xhq9@kf3k4aywsrp0d2is.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/u7jfo9v8qrnmthgi
+#    url: jdbc:mysql://sam-my-sql.cmtthcn4z2p3.us-east-2.rds.amazonaws.com/sam-my-sql
+#    username: ${MY_SQL_USERNAME:root}
+#    password: ${MY_SQL_PASSWORD:root}
+#    
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL57Dialect
+#        
