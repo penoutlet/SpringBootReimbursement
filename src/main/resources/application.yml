@@ -4,9 +4,12 @@ server:
  
 spring:
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:root}
-    username: ${MYSQL_USERNAME:root}
-    password: ${MYSQL_PASSWORD:root}
+#    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:root}
+    url: jdbc:mysql://sam-my-sql.cmtthcn4z2p3.us-east-2.rds.amazonaws.com:3306/sam-my-sql
+#    username: ${MYSQL_USERNAME:root}
+    username: sam-my-sql
+#    password: ${MYSQL_PASSWORD:root}
+    password: sam-my-sql
   jpa:
     hibernate:
       ddl-auto: create
